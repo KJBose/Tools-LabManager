@@ -1,0 +1,11 @@
+"device1" : {
+  "device_name" : "name1",
+  "device_id" : id1,
+  "device_type" : "router",
+  "device_state": "running",
+  "device_ip" : 1.2.1.2,
+  "device_mgmt_int" : Te 0/0/0/1,
+  "reservation_status" : TRUE,
+  "reserved_by": "jkarnati"
+
+}
