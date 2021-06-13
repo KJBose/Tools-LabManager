@@ -1,0 +1,45 @@
+<h2 align = 'center' color= #4B9CD3 style> Lab Device Summary </h2>
+<br> <br>
+<section class="row">
+<div class="container col-md-6" align = "center" *ngFor="let item of summary">
+<div class="table">
+  <div class="table-header">
+    <div class="header__item">
+      <h4><a id="name" class="filter__link" href="#">Team - {{item.team}} </a></h4>
+    </div>
+  </div>
+
+  <!-- <div class="table-header">
+    <br>
+  </div> -->
+
+  <div class="table-header">
+    <div class="header__item">
+      <b> <a id="name" class="filter__link" href="#">Device Type</a></b>
+    </div>
+    <div class="header__item">
+      <b> <a id="count" class="filter__link filter__link--number" href="#">Device Count</a></b>
+    </div>
+  </div>
+
+  <div class="table-content">
+    <div class="table-row">
+      <div class="table-data">UCS </div>
+      <div class="table-data">{{ item.ucs }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-data">Router/Switch</div>
+      <div class="table-data">{{ item.router }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-data">Miscelleneous </div>
+      <div class="table-data">{{ item.miscelleneous }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-data">Total NCP Devices </div>
+      <div class="table-data">{{ item.total }}</div>
+    </div>
+  </div>
+
+</div>
+<section>

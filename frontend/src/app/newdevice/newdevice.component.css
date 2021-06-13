@@ -261,7 +261,7 @@ a[ui-sref="admin.auth"] {
 #main-holder {
   margin: 0 auto;
   width:850px;
-  height:250px;
+  height:500px;
   /*width: 60%;
   height: 100%;*/
   display: grid;

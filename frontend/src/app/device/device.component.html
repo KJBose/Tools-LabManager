@@ -1,0 +1,70 @@
+<!-- <div id="display" align= "center">
+  <h2> Details of {{ device.device_name }} </h2> <br>
+  <table style="width:50%" class="table">
+  <tr>
+    <th><h3>Device Property</h3></th>
+    <th><h3>Details</h3></th>
+  </tr>
+  <tr>
+    <td><h4>  Device Name  </h4></td>
+    <td><h4>  {{ device.device_name }} </h4></td>
+  </tr>
+  <tr>
+    <td><h4>   Device ID  </h4></td>
+    <td><h4>  {{ device.device_id }} </h4></td>
+  </tr>
+  <tr>
+    <td><h4>  Device Type  </h4></td>
+    <td><h4>  {{ device.device_name }} </h4></td>
+  </tr>
+  <tr>
+    <td><h4>  Device Status  </h4></td>
+    <td><h4>  {{ device.reserved }} </h4></td>
+  </tr>
+  <tr>
+    <td><h4>  Device User  </h4></td>
+    <td><h4>  {{ device.reservedby }} </h4></td>
+  </tr>
+</table>
+</div> -->
+
+<!-- <div class="container"> -->
+<!--<app-device (displayDevice)="displayDevice($event)">
+</app-device> -->
+
+	<div class="table" align="center" >
+		<div class="table-header">
+			<div class="header__item"><a id="name" class="filter__link" href="#">Device Property</a></div>
+			<div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Details</a></div>
+
+		</div>
+		<div class="table-content">
+			<div class="table-row">
+				<div class="table-data">Device Name </div>
+				<div class="table-data">{{ device.device_name }}</div>
+			</div>
+			<div class="table-row">
+				<div class="table-data">Device ID</div>
+				<div class="table-data">{{ device.device_id }}</div>
+			</div>
+			<div class="table-row">
+				<div class="table-data">Device Type </div>
+				<div class="table-data">{{ device.device_type }}</div>
+			</div>
+      <div class="table-row">
+        <div class="table-data">Device Status </div>
+        <div class="table-data" *ngIf="device.reserved">Reserved</div>
+				<div class="table-data" *ngIf="!device.reserved">Available to Reserve</div>
+      </div>
+      <div class="table-row">
+        <div class="table-data">Device User</div>
+        <div class="table-data">{{ device.reservedby }}</div>
+      </div>
+
+		</div>
+	</div>
+<br> <br>
+	<div class="edit" align="center" >
+	<input type="submit" value="Edit Device" id="login-form-submit">
+	</div>
+<!-- </div> -->

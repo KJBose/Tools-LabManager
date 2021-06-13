@@ -1,21 +1,31 @@
 <!-- <app-devices> -->
-<div class="container" *ngFor="let device of devices">
-<!-- <ul>
-  <li *ngFor="let device of devices">
-    {{ device }} -->
-    <h2 id="menu-categories-title" class="text-center">
-      {{ device.device_name }}
-    </h2>
-    <div class="text-center">
-      {{ device.device_img }}
-    </div>
-
-    <!-- <menu-item ng-repeat="menuItem in menuItemsCtrl.menuItems.menu_items"
-               menu-item="menuItem">
-    </menu-item> -->
-
-  <!-- </li>
-  <li> Device1 </li>
-</ul> -->
+<div class="text-center">
+  <!-- <a routerLink="/device" routerLinkActive="active"> <h2 align="right"> Add/Edit Device </h2> </a> -->
+  <input align="center" type="submit" value="Add Device" id="login-form-submit" (click)="addDevice()">
+  <h3 align="center"> Reserve or Release your devices below </h3>
+  <br>
+  <br>
 </div>
+<section class="row">
+<div class="container">
+   <div id="display" class="col-md-3" *ngFor="let device of devices">
+
+
+      <div class="device-display">
+      <a [routerLink]="['/device', device.device_id]" >
+      <!--<a href>-->
+      <img width="200" height="200" src="{{ device.device_img }}" alt="{{ device.device_name }}">
+      <!-- (click)="displayDetails(device.device_id)"> -->
+      </a>
+      <span> <h4>  {{ device.device_name }} </h4>
+
+       <div *ngIf="!device.reserved"> <input class="form-check-input" type="radio" name="reserve" id="{{device.device_id}}" (click)="reserve(device.device_id)">
+        Reserve </div>
+       <div *ngIf="device.reserved"> <input class="form-check-input" type="radio" name="release" id="f{{device.device_id}}" (click)="release(device.device_id)">
+        Release </div>
+        <div *ngIf="device.reserved"> Reserveby {{ device.reservedby }} </div> </span>
+    </div>
+  </div>
+  </div>
+ <section>
 <!-- </app-devices> -->

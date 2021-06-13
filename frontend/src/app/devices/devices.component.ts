@@ -1,44 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+import { Router } from '@angular/router';
 
 import { DevicesService } from './../devices.service';
 
 import { Devices } from './../devices'
 
+import { DeviceService } from './../device.service'
+
+
+
 
 @Component({
   selector: 'app-devices',
+  //directives: [HomeComponent],
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent implements OnInit {
-  devices:Devices[];
-  //devices:any
-  constructor(service:DevicesService) {
-    //this.devices = service.getDevices()
-    this.devices = [
-      {
-        device_id : 1,
-        device_name : "device1",
-        device_img : "test",
-        reserved : true,
-        reservedby : "Bose"
+  devices:any
+  devicesservice:any
+  displayitem:any
+  devservice:any
 
-      },
-      {
+  constructor(private router: Router, service:DevicesService) {
 
-        device_id : 2,
-        device_name : "device2",
-        device_img : "test",
-        reserved : true,
-        reservedby : "Ram"
-
-      }]
-
+    service.getDevices().subscribe((response:any) => {
+      this.devices = response;
+      console.log(response);
+    });
+    this.devicesservice = service;
 
   }
-
 
   ngOnInit(): void {
   }
+
+  reserve(device_id: Number){
+    for (var item of this.devices) {
+      if (device_id == item.device_id) {
+        item.reserved = true;
+        item.reservedby = " replace with login user";
+      }
+    }
+  }
+
+  release(device_id: Number) {
+    for (var item of this.devices) {
+      if (device_id == item.device_id) {
+        item.reserved = false;
+         item.reservedby = " ";
+      }
+    }
+  }
+
+  displayDetails(device_id: string) {
+
+    const navigationDetails: string[] = ['/device', device_id];
+    this.router.navigate(navigationDetails);
+
+}
+ addDevice() {
+   const navigationDetails: string[] = ['/newdevice'];
+   this.router.navigate(navigationDetails);
+   return true
+
+ }
 
 }

@@ -1,0 +1,20 @@
+<div class="main-container" >
+<main id="main-holder" align="center">
+ <h2 id="login-header" color= #4B9CD3 style>Add new device details</h2>
+
+ <div id="login-error-msg-holder">
+   <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+ </div>
+
+ <form id="login-form" #newdevice_data = "ngForm" (ngSubmit) = "add_newdevice(newdevice_data.value)">
+   <input type="text" name="device_id" id="username-field" class="login-form-field" placeholder="device_id" ngModel>
+   <input type="text" name="device_name" id="password-field" class="login-form-field" placeholder="device_name" ngModel>
+   <input type="text" name="device_img" id="password-field" class="login-form-field" placeholder="device_img" ngModel>
+   <input type="text" name="device_type" id="password-field" class="login-form-field" placeholder="device_type" ngModel>
+   <input type="text" name="reserved" id="password-field" class="login-form-field" placeholder="reserved" ngModel>
+   <input type="text" name="reservedby" id="password-field" class="login-form-field" placeholder="reservedby" ngModel>
+   <input type="text" name="ownedby" id="password-field" class="login-form-field" placeholder="ownedby" ngModel>
+   <input type="submit" value="Add" id="login-form-submit" >
+ </form>
+</main>
+</div>

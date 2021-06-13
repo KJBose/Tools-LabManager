@@ -1,51 +1,90 @@
-<nav id="header-nav" class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-             <a href="index.html" class="pull-left visible-md visible-lg">
-              <div id="logo-img" alt="Logo image"></div>
-            </a>
-
-            <div class="navbar-brand">
-              <p>
-                <span><b> A single stop shop to manage DNAC Network! </b></span>
-              </p>
-            </div>
-
-            <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-
-<div id="collapsable-nav" class="collapse navbar-collapse">
-            <ul id="nav-list" class="nav navbar-nav navbar-right">
-              <!-- <li id="navHomeButton" class="visible-xs">
-                <a routerLink="/devices" routerLinkActive="active">
-                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> Home </a>
-              </li> -->
-              <li>
-                <a routerLink="/devices" routerLinkActive="active">
-                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> Devices </a>
-              </li>
-              <!-- <li id="navHomeButton">
-                <a routerLink="/devices" routerLinkActive="active">
-                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> SignUp </a>
-              </li>
-              <li id="navHomeButton">
-                <a routerLink="/devices" routerLinkActive="active">
-                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> SignIn </a>
-              </li>
-              <li id="navHomeButton">
-                <a routerLink="/devices" routerLinkActive="active">
-                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> SignOut </a>
-              </li> -->
-              </ul>
-        </div>
-      </div>
-    </nav>
-
+<header>
+   <nav id="header-nav" class="navbar navbar-default">
     <div class="container">
-    <router-outlet></router-outlet>
+      <div class="navbar-header">
+
+        <a href="/../index.html" class="pull-left visible-md visible-lg">
+          <div id="logo-img" alt="Logo image"></div>
+        </a>
+
+        <div class="navbar-brand">
+          <p>
+            <span><b> A single stop shop to reserve DNAC Lab Devices! </b></span>
+          </p>
+        </div>
+
+        <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+     <div id="collapsable-nav" class="collapse navbar-collapse">
+        <ul id="nav-list" class="nav navbar-nav navbar-right">
+
+          <li id="navHomeButton" *ngIf="!login">
+            <a routerLink="/devices" routerLinkActive="active">
+              <span class="glyphicon glyphicon-log-in"></span><br class="hidden-xs"> LogIn </a>
+          </li>
+          <li id="navHomeButton" *ngIf="login">
+            <a routerLink="/home" routerLinkActive="active">
+              <span class="glyphicon glyphicon-bookmark"></span><br class="hidden-xs"> Summary </a>
+          </li>
+          <li id="navHomeButton" *ngIf="login">
+            <a routerLink="/devices" routerLinkActive="active">
+              <span class="glyphicon glyphicon glyphicon-hdd"></span><br class="hidden-xs"> Devices </a>
+          </li>
+          <li id="navHomeButton">
+            <a routerLink="/support" routerLinkActive="active">
+              <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> Support </a>
+          </li>
+
+
+          <!-- <li d="navHomeButton">
+            <a routerLink="/devices" routerLinkActive="active">
+              <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> Profile </a>
+          </li> -->
+           <li id="navHomeButton" *ngIf="login">
+            <!-- <a routerLink="/index" routerLinkActive="active"> -->
+            <a href="../index.html">
+              <span class="glyphicon glyphicon-log-out"></span><br class="hidden-xs" (click)="logOut()"> LogOut </a>
+          </li>
+          </ul>
     </div>
+  </div>
+ </nav>
+</header>
+
+  <div class="main-container" >
+    <div class="login" *ngIf="!login">
+       <h1 align = 'center' class="xxlarge-copy mb-0.75 balance-text" style>
+         Welcome to DNAC Lab Management Portal !! </h1>
+       <h4 align = 'center' class="xxsmall-copy mb-0.75 balance-text" letter-spacing= "-0.01em" style>
+         Track Device Status, Reserve/Release for usage </h4>
+        <br> <br> <br>
+    </div>
+        <main id="main-holder" align="center" *ngIf="!login">
+         <h2 id="login-header" color= #4B9CD3 style>Login To Access</h2>
+
+         <div id="login-error-msg-holder">
+           <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+         </div>
+
+         <form id="login-form" #usercred_data = "ngForm" (ngSubmit) = "logIn(usercred_data.value)">
+           <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+           <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+           <input type="submit" value="Login" id="login-form-submit">
+         </form>
+       </main>
+
+ <router-outlet></router-outlet>
+ </div>
+
+<footer class="panel-footer panel-custom">
+    <div class="text-center">
+      &copy; Copyright Cisco Systems inc. 2021 |
+      <a routerLink="/support" routerLinkActive="active"> Admin </a>
+  </div>
+</footer>
